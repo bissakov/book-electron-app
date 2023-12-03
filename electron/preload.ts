@@ -1,6 +1,19 @@
 import { contextBridge, ipcRenderer } from "electron";
 
 // --------- Expose some API to the Renderer process ---------
+const electron = {
+  getProfile: () => ipcRenderer.invoke("auth:get-profile"),
+  logOut: () => ipcRenderer.send("auth:log-out"),
+  getPrivateData: () => ipcRenderer.invoke("api:get-private-data"),
+  readEncryptedToken: () => ipcRenderer.send("auth:readEncryptedToken"),
+  storeEncryptedToken: (token: string) =>
+    ipcRenderer.send("auth:storeEncryptedToken", token),
+};
+
+process.once("loaded", () => {
+  contextBridge.exposeInMainWorld("electron", electron);
+});
+
 contextBridge.exposeInMainWorld("ipcRenderer", withPrototype(ipcRenderer));
 
 // `exposeInMainWorld` can't detect attributes and methods of `prototype`, manually patching it.

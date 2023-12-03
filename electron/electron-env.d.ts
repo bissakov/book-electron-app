@@ -24,4 +24,11 @@ declare namespace NodeJS {
 // Used in Renderer process, expose in `preload.ts`
 interface Window {
   ipcRenderer: import("electron").IpcRenderer;
+  electron: {
+    getProfile: () => Promise<string | null>;
+    logOut: () => Promise<void>;
+    getPrivateData: () => string;
+    storeEncryptedToken: (token: string) => void;
+    readEncryptedToken: () => string | null;
+  };
 }
