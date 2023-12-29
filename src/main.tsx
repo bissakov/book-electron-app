@@ -1,60 +1,44 @@
-// import React from "react";
-// import ReactDOM from "react-dom/client";
-// import WelcomePage from "./routes/Welcome";
-// // import App from "./routes/App";
-// import SignUpForm from "./routes/SignUpForm";
-// import SignInForm from "./routes/SignInForm";
-// import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// import { library } from "@fortawesome/fontawesome-svg-core";
-// import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
-// import "@fortawesome/fontawesome-svg-core/styles.css";
-
-// library.add(faAngleRight);
-
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <WelcomePage />,
-//   },
-//   {
-//     path: "/signup",
-//     element: <SignUpForm />,
-//   },
-//   {
-//     path: "/signin",
-//     element: <SignInForm />,
-//   },
-// ]);
-
-// // bg-gradient-to-tr from-violet-500 to-fuchsia-500
-
-// ReactDOM.createRoot(document.getElementById("root")!).render(
-//   <React.StrictMode>
-//     <div className="flex h-screen flex-col items-center justify-center bg-gradient-to-t from-gray-900 to-indigo-900 antialiased">
-//       <RouterProvider router={router} />
-//     </div>
-//   </React.StrictMode>,
-// );
-
-// // Remove Preload scripts loading
-// postMessage({ payload: "removeLoading" }, "*");
-
-// // Use contextBridge
-// window.ipcRenderer.on("main-process-message", (_event, message) => {
-//   console.log(message);
-// });
-
 import React from "react";
-import { createContext, useContext } from "react";
 import ReactDOM from "react-dom/client";
-import App from "./routes/App";
+import Home from "./routes/Home";
+import BookPage from "./routes/BookPage";
 import { AppState, Auth0Provider } from "@auth0/auth0-react";
-import { config } from "../services/config";
 import { createBrowserHistory } from "history";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ThemeProvider } from "./@/components/ui/theme-provider";
+import AuthenticatedRoute from "./routes/AuthenticatedRoute";
+import SearchPage from "./routes/SearchPage";
+import RecommendationsPage from "./routes/RecommendationsPage";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <AuthenticatedRoute component={Home} />,
+  },
+  {
+    path: "/books/:bookId",
+    element: <AuthenticatedRoute component={BookPage} />,
+  },
+  {
+    path: "/search",
+    element: <AuthenticatedRoute component={SearchPage} />,
+  },
+  {
+    path: "/search",
+    element: <AuthenticatedRoute component={RecommendationsPage} />,
+  },
+  {
+    path: "/recommendations",
+    element: <AuthenticatedRoute component={RecommendationsPage} />,
+  },
+]);
+
+const config = {
+  domain: "dev-aapkyq04nrxqdzz4.eu.auth0.com",
+  clientId: "YOhtCjTWDUMCJMwznFGRAaL8ojQQns93",
+};
 
 const history = createBrowserHistory();
-
-const AuthContext = createContext({});
 
 const onRedirectCallback = (appState: AppState | undefined) => {
   history.push(
@@ -65,25 +49,21 @@ const onRedirectCallback = (appState: AppState | undefined) => {
 };
 
 const providerConfig = {
-  domain: config.auth0Domain,
+  domain: config.domain,
   clientId: config.clientId,
   onRedirectCallback,
   authorizationParams: {
     redirect_uri: window.location.origin,
-    ...(config.apiIdentifier ? { audience: config.apiIdentifier } : null),
   },
-};
-
-export const useAuth = () => {
-  return useContext(AuthContext);
 };
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Auth0Provider {...providerConfig}>
-      <App />
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </Auth0Provider>
-    ;
   </React.StrictMode>,
 );
 
