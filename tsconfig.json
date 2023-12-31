@@ -18,7 +18,16 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* Aliases */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/@/*"],
+      "components/*": ["src/components/*"],
+      "services/*": ["src/services/*"],
+      "routes/*": ["src/routes/*"]
+    }
   },
   "include": ["src", "electron", "services"],
   "references": [{ "path": "./tsconfig.node.json" }]
