@@ -1,11 +1,11 @@
-import { ModeToggle } from "../@/components/ui/mode-toggle";
 import { Link, createSearchParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import SearchBar from "./SearchBar";
-import UserProfileDropdown from "./UserProfileDropdown";
-import LogoLink from "./LogoLink";
-import { Button } from "../@/components/ui/button";
+import { ModeToggle } from "@/components/ui/mode-toggle";
+import SearchBar from "components/SearchBar";
+import UserProfileDropdown from "components/UserProfileDropdown";
+import LogoLink from "components/LogoLink";
+import { Button } from "@/components/ui/button";
 
 interface HeaderProps {
   email: string | undefined;

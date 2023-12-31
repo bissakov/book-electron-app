@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Sidebar from "../components/Sidebar";
-import BookCard from "../components/BookCard";
+import Sidebar from "components/Sidebar";
+import BookCard from "components/BookCard";
 
 type Author = {
   authorId: number;

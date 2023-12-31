@@ -1,7 +1,7 @@
-import BookCard from "../components/BookCard";
 import { useEffect, useState } from "react";
-import Pagination from "../components/Pagination";
 import { useSearchParams } from "react-router-dom";
+import BookCard from "components/BookCard";
+import Pagination from "components/Pagination";
 
 type Author = {
   authorId: number;

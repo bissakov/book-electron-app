@@ -1,7 +1,7 @@
-import { CardContent, Card } from "../@/components/ui/card";
+import { CardContent, Card } from "@/components/ui/card";
 import { ThumbsUpIcon } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "../@/components/ui/avatar";
-import Rating from "../components/Rating";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Rating from "components/Rating";
 
 interface ReviewProps {
   username: string;

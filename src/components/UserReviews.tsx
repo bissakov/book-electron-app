@@ -5,10 +5,10 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from "../@/components/ui/dropdown-menu";
-import { Button } from "../@/components/ui/button";
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 import { ArrowUpDownIcon } from "lucide-react";
-import Review from "./Review";
+import Review from "components/Review";
 import { useParams } from "react-router-dom";
 
 interface Review {

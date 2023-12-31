@@ -1,5 +1,5 @@
 import { Link, useSearchParams } from "react-router-dom";
-import { Button } from "../@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 

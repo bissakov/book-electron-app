@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { CardContent, Card } from "../@/components/ui/card";
-import Rating from "./Rating";
+import { CardContent, Card } from "@/components/ui/card";
+import Rating from "components/Rating";
 
 interface BookCardProps {
   bookId: number;

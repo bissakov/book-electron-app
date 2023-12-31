@@ -1,9 +1,9 @@
-import { CardContent, Card } from "../@/components/ui/card";
-import Rating from "../components/Rating";
+import { CardContent, Card } from "@/components/ui/card";
+import Rating from "components/Rating";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import BookCard from "../components/BookCard";
-import UserReviews from "../components/UserReviews";
+import BookCard from "components/BookCard";
+import UserReviews from "components/UserReviews";
 
 const RelatedBooks = () => {
   return (

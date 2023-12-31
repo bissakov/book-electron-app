@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Home from "./routes/Home";
-import BookPage from "./routes/BookPage";
+import Home from "routes/Home";
+import BookPage from "routes/BookPage";
+import AuthenticatedRoute from "routes/AuthenticatedRoute";
+import SearchPage from "routes/SearchPage";
+import RecommendationsPage from "routes/RecommendationsPage";
 import { AppState, Auth0Provider } from "@auth0/auth0-react";
 import { createBrowserHistory } from "history";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ThemeProvider } from "./@/components/ui/theme-provider";
-import AuthenticatedRoute from "./routes/AuthenticatedRoute";
-import SearchPage from "./routes/SearchPage";
-import RecommendationsPage from "./routes/RecommendationsPage";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 
 const router = createBrowserRouter([
   {
